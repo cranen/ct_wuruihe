@@ -11,6 +11,7 @@
     <modules>
         <module>Producers</module>
         <module>Consumers</module>
+        <module>analysis</module>
     </modules>
 
 

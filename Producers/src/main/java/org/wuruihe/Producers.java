@@ -16,65 +16,60 @@ public class Producers {
     private String start = "2019-01-01";
     private String end = "2020-01-01";
 
-    public static final String E = "15064792307";
-    List<String> phoneNum = new ArrayList<String>();
-    Map<String, String> phoneName = new HashMap<String,String>();
+    private ArrayList<String> phoneNum = new ArrayList<String>();
+
+    private Map<String, String> phoneName = new HashMap<String, String>();
+
+    private DecimalFormat df = new DecimalFormat("0000");
+    private SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+    private SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     /**
      * 添加数据
      */
     public void init() {
-        phoneNum.add("15369468720");
-        phoneNum.add("19920860202");
-        phoneNum.add("18411925860");
-        phoneNum.add("14473548449");
-        phoneNum.add("18749966182");
-        phoneNum.add("19379884788");
-        phoneNum.add("19335715448");
-        phoneNum.add("18503558939");
-        phoneNum.add("13407209608");
-        phoneNum.add("15596505995");
-        phoneNum.add("17519874292");
-        phoneNum.add("15178485516");
-        phoneNum.add("19877232369");
-        phoneNum.add("18706287692");
-        phoneNum.add("18944239644");
-        phoneNum.add("17325302007");
-        phoneNum.add("18839074540");
-        phoneNum.add("19879419704");
-        phoneNum.add("16480981069");
-        phoneNum.add("18674257265");
-        phoneNum.add("18302820904");
-        phoneNum.add("15133295266");
-        phoneNum.add("17868457605");
-        phoneNum.add("15490732767");
-        phoneNum.add(E);
+        phoneNum.add("19251212343");
+        phoneNum.add("15961260091");
+        phoneNum.add("17130206814");
+        phoneNum.add("18682499648");
+        phoneNum.add("15361960968");
+        phoneNum.add("18356645821");
+        phoneNum.add("17818674361");
+        phoneNum.add("14266298447");
+        phoneNum.add("13141904126");
+        phoneNum.add("13157770954");
+        phoneNum.add("19460860743");
+        phoneNum.add("14016550401");
+        phoneNum.add("14314302040");
+        phoneNum.add("17457157786");
+        phoneNum.add("15108090007");
+        phoneNum.add("15882276699");
+        phoneNum.add("19694998088");
+        phoneNum.add("18264427294");
+        phoneNum.add("17245432318");
+        phoneNum.add("16705495586");
+        phoneNum.add("16705495586");
 
-        phoneName.put("15369468720", "李雁");
-        phoneName.put("19920860202", "卫艺");
-        phoneName.put("18411925860", "仰莉");
-        phoneName.put("14473548449", "陶欣悦");
-        phoneName.put("18749966182", "施梅梅");
-        phoneName.put("19379884788", "金虹霖");
-        phoneName.put("19335715448", "魏明艳");
-        phoneName.put("18503558939", "华贞");
-        phoneName.put("13407209608", "华啟倩");
-        phoneName.put("15596505995", "仲采绿");
-        phoneName.put("17519874292", "卫丹");
-        phoneName.put("15178485516", "戚丽红");
-        phoneName.put("19877232369", "何翠柔");
-        phoneName.put("18706287692", "钱溶艳");
-        phoneName.put("18944239644", "钱琳");
-        phoneName.put("17325302007", "缪静欣");
-        phoneName.put("18839074540", "焦秋菊");
-        phoneName.put("19879419704", "吕访琴");
-        phoneName.put("16480981069", "沈丹");
-        phoneName.put("18674257265", "褚美丽");
-        phoneName.put("18302820904", "孙怡");
-        phoneName.put("15133295266", "许婵");
-        phoneName.put("17868457605", "曹红恋");
-        phoneName.put("15490732767", "吕柔");
-        phoneName.put("15064972307", "冯怜云");
+        phoneName.put("19251212343", "李雁");
+        phoneName.put("15961260091", "卫艺");
+        phoneName.put("17130206814", "仰莉");
+        phoneName.put("18682499648", "陶欣悦");
+        phoneName.put("15361960968", "施梅梅");
+        phoneName.put("18356645821", "金虹霖");
+        phoneName.put("17818674361", "魏明艳");
+        phoneName.put("14266298447", "华贞");
+        phoneName.put("13141904126", "华啟倩");
+        phoneName.put("13157770954", "仲采绿");
+        phoneName.put("19460860743", "卫丹");
+        phoneName.put("14016550401", "戚丽红");
+        phoneName.put("14314302040", "何翠柔");
+        phoneName.put("17457157786", "钱溶艳");
+        phoneName.put("15108090007", "钱琳");
+        phoneName.put("15882276699", "缪静欣");
+        phoneName.put("19694998088", "焦秋菊");
+        phoneName.put("18264427294", "吕访琴");
+        phoneName.put("17245432318", "沈丹");
+        phoneName.put("16705495586", "褚美丽");
     }
 
     /**
@@ -82,13 +77,12 @@ public class Producers {
      * @return
      */
     public  String produceLog() throws ParseException {
-        String caller;//随机数空间
+        String caller;
         String callee;
         String buildTime;
-        String duration;
-        //1、随机生成两个不同的电话号码
-        int callerIndex=(int)(Math.random()*phoneNum.size());
-        caller=phoneNum.get(callerIndex);//获取其中一个生成的电话数
+        //1.随机生成两个不同的电话号
+        int callerIndex = (int) (Math.random() * phoneNum.size());
+        caller = phoneNum.get(callerIndex);//获取其中一个
         while(true){
            int calleeIndex=(int)(Math.random()*phoneNum.size());
            callee=phoneNum.get(calleeIndex);
@@ -103,18 +97,17 @@ public class Producers {
         //3随机生成通话时
         DecimalFormat dfs= new DecimalFormat("0000");
         String dura=dfs.format((int)(Math.random()*30*60+1));
-        return caller+","+callee+","+buildTime+dura+"\n";
+        return caller+","+callee+","+buildTime+","+dura+"\n";
 
        // return null;
     }
     //生成通话时间
     private String randomBuidTime(String start,String end) throws ParseException {
-        SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd");
-        SimpleDateFormat sdfd2=new SimpleDateFormat("yyyyMMdd HH:mm:ss");
-        long startpoit = sf.parse(start).getTime();
-        long endpoit = sf.parse(end).getTime();
-        long result = startpoit + (int) (Math.random() * (endpoit - startpoit));
-        return sdfd2.format(new Date(result));
+        long startPoint = sdf1.parse(start).getTime();
+        long endPoint = sdf1.parse(end).getTime();
+
+        long resultTS = startPoint + (long) (Math.random() * (endPoint - startPoint));
+        return sdf2.format(new Date(resultTS));
 
     }
     public void writeLog(String path) throws Exception {
@@ -143,7 +136,8 @@ public class Producers {
         //   System.out.println(a.produceLog());
         //   Thread.sleep(500);
         //  }
-        a.writeLog("C:\\Users\\cranen\\Desktop\\a.txt");
+        //a.writeLog("C:\\Users\\cranen\\Desktop\\a.txt");
+        a.writeLog(args[0]);
 
 
     }

@@ -29,14 +29,14 @@
 		<value>false</value>
 	</property>
 
-	<property>
-		<name>dfs.namenode.secondary.http-address</name>
-		<value>hadoop104:50090</value>
-	</property>
+	<!--<property>-->
+		<!--<name>dfs.namenode.secondary.http-address</name>-->
+		<!--<value>hadoop104:50090</value>-->
+	<!--</property>-->
 
 	<property>
 		<name>dfs.namenode.http-address</name>
-		<value>hadoop102:50070</value>
+		<value>hadoop101:50070</value>
 	</property>
 
 	<property>
